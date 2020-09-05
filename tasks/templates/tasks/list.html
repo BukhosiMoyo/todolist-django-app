@@ -1,6 +1,15 @@
+{% extends "tasks/main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+
 <h1>To do</h1>
 
-<form action="">
+<form action="/" method="POST">
+    {% csrf_token %}
     {{form.title}}
     <input type="submit" name="Create Task">
 </form>
@@ -8,7 +17,18 @@
 {% for task in tasks %}
 
     <div>
+        <a href="{% url 'delete' task.id %}">delete</a>
+        <a href="{% url 'update_task' task.id %}">update</a>
+
+        {% if task.complete == True %}
+        <strike>{{task}}</strike>
+        
+        {% else %}
         <p>{{task}}</p>
+        {% endif %}
     </div>
 
 {% endfor %}
+
+
+{% endblock content %}

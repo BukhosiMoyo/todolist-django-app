@@ -8,13 +8,16 @@ def  index(request):
 
     tasks = Task.objects.all()
     form = TaskForm(request.POST)
+    
     if request.method == "POST":
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
         return redirect("/")
 
-    context= {'tasks':tasks, 'form':form}
+    
+
+    context= {'tasks':tasks, 'form':form,}
 
     return render(request, "tasks/list.html", context)
 

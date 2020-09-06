@@ -35,95 +35,93 @@
  <!--begin::Portlet-->
 {% for task in tasks %}
 
-	
-            <div class="kt-portlet kt-portlet--collapsed container cantainer-fluid " data-ktportlet="true" id="kt_portlet_tools_6">
-                <div class="kt-portlet__head">
-                    <div class="kt-portlet__head-label">
-                        <span class="kt-portlet__head-icon">
-                            <i class="flaticon2-position kt-label-font-color-2"></i>
-                        </span>
-                        {% if task.complete == True %}
-                            <strike>
-                            <h4 class="kt-portlet__head-title">
-                                {{task|truncatewords:20|linebreaks}}                                    
-                            </h4>
-                            </strike>
-                        {% else %}
-                            <h4 class="kt-portlet__head-title">
-                                {{task}}                                    
-                            </h4>
-                        {% endif %}
 
-                    </div>
-                    <div class="kt-portlet__head-toolbar">
-                        <div class="kt-portlet__head-group">
-                            <div class="btn-group">
-                                <button type="button" data-ktportlet-tool="toggle" class="btn btn-success">
-                                    <span class="kt-portlet__head-icon">
-                                        <i class="flaticon2-rectangular kt-label-font-color-0"></i>
-                                    </span>
-                                </button>
-                                <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{% url 'update_task' task.id %}">Update</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{% url 'delete' task.id %}">Delete</a>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="kt-portlet__body">
-                    <div class="kt-portlet__content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy is simply dummy is simply dummy is simply dummy is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        Lorem Ipsum has been the industry.
+<div class="container">
+<div class="kt-portlet kt-portlet--collapsed kt-container " data-ktportlet="true" id="kt_portlet_tools_6">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            {% if task.complete == True %}
+                <span class="kt-portlet__head-icon">
+                    <i class="flaticon2-check-mark " style="color:#36a3f7"></i>
+                </span>
+                <strike style="color:black;">
+                <h4 class="kt-portlet__head-title">
+                    {{task}}                                    
+                </h4>
+                </strike>
+                <span class="badge badge-success ml-4">completed</span>
+            {% else %}
+
+                <span class="kt-portlet__head-icon">
+                    <i class="flaticon2-time" style="color:red"></i>
+                </span>
+
+                <h4 class="kt-portlet__head-title">
+                    {{task}}                                    
+                </h4>
+                <span class="badge badge-danger ml-4">incomplete</span>
+            {% endif %}
+        </div>
+
+        <div class="kt-portlet__head-toolbar">
+            <div class="kt-portlet__head-group">
+                <div class="btn-group">
+                    <button type="button" data-ktportlet-tool="toggle" class="btn btn-success">
+                        <span class="kt-portlet__head-icon">
+                            <i class="flaticon2-rectangular kt-label-font-color-0"></i>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'update_task' task.id %}">Update</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'delete' task.id %}" >Delete</a>   
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>	
-{% endfor%}
-                <!--end::Portlet-->
-<!--end::Portlet-->
+    <div class="kt-portlet__body">
+        <div class="kt-portlet__content">      
+                <a class="btn btn-success btn-sm mt-2" href="{% url 'update_task' task.id %}">Add Description<i class="flaticon2-edit"></i></a>
 
-
-
-
-<h1>To do</h1>
-
-
-<form action="/" method="POST">
-    {% csrf_token %}
-    {{form.title}}
-    <input type="submit" name="Create Task">
-</form>
-
-{% for task in tasks %}
-
-    <div>
-        <a href="{% url 'delete' task.id %}">delete</a>
-        <a href="{% url 'update_task' task.id %}">update</a>
-
-        {% if task.complete == True %}
-        <strike><p>{{task}}</p></strike>
-        
-        {% else %}
-        <p>{{task}}</p>
-        {% endif %}
+                <h6 class="mt-4">Description</h6>
+                
+                <hr>
+            {{task.description}}
+        </div>
     </div>
+</div> 
+</div>    
 
-{% endfor %}
+{% endfor%}
+<!-- begin::Scrolltop -->
+<div id="kt_scrolltop" class="kt-scrolltop">
+	<i class="fa fa-arrow-up"></i>
+</div>
+<!-- end::Scrolltop -->
+
+<!-- begin:: Demo Toolbar -->
+<ul class="kt-sticky-toolbar" style="margin-top: 40px;">
+	<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--demo-toggle" id="kt_demo_panel_toggle" data-toggle="kt-tooltip"  title="Check out more Projects" data-placement="right">
+		<a href="#" style="font-size:1em;" class="">Projects</a>
+	</li>
+	<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--builder" data-toggle="kt-tooltip" title="Layout Builder" data-placement="left">
+        		<a href="../../builder.html" ><i class="flaticon2-box"></i></a>
+	</li>
+	<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--docs" data-toggle="kt-tooltip" title="Documentation" data-placement="left">
+		<a href="https://keenthemes.com/keen/?page=docs" target="_blank"><i class="flaticon2-file"></i></a>
+	</li>
+</ul>
+<!-- end:: Demo Toolbar -->	    
 
 <script>
 
       var form_fields = document.getElementsByTagName('input')
       form_fields[1].placeholder='Add a new task...';
-      form_fields[1].class='form-control form-control-lg';
+
 
       for (var field in form_fields){
           form_fields[field].className += ' form-control'

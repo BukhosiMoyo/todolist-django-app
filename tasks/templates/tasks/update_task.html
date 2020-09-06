@@ -5,12 +5,44 @@
 {% block content %}
 
 
-<h3>Update task</h3>
 
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" name="Update task">
-</form>
+<!--begin::Portlet-->
+<div class="container mt-5" >
+    <div class="kt-portlet ">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">Todo List</h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="kt-section">
+                
+                <form method="POST" action="">
+                    {% csrf_token %}
+                        <div>
+                            {{ form.as_p}}
+                        </div>
+                    <input class="btn btn-sm btn-info" type="submit" name="Update task">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+      var form_fields = document.getElementsByTagName('input')
+      form_fields[1].placeholder='Add a new task...';
+
+
+      for (var field in form_fields){
+          form_fields[field].className += ' form-control'
+      }
+   
+</script>
+
+
 
 {% endblock %}

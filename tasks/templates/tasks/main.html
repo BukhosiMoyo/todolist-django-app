@@ -1,38 +1,92 @@
 {% load static %}
 
-<!doctype html>
-<html class="no-js h-100" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Bukhosi Todo App</title>
-    <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    
-    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href=" {% static 'styles/shards-dashboards.1.1.0.min.css' %} ">
-    <link rel="stylesheet"  href=" {% static 'styles/extras.1.1.0.min.css' %} ">
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </head>
+<!DOCTYPE html>
 
-  <body class="d-flex flex-column min-vh-100" class="  h-100">
-
-    {% block content %}
+<html lang="en" >
+    <!-- begin::Head -->
     
-      
-    {% endblock content %}
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Bukhosi | Todo </title>
+    <meta name="description" content=""> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!--begin::Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">       
+    <!--end::Fonts -->
 
 
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-      <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
-      <script src=" {% static 'scripts/extras.1.1.0.min.js' %} "></script>
-      <script src=" {% static 'scripts/shards-dashboards.1.1.0.min.js' %} "></script>
-      <script src=" {% static 'scripts/app/app-blog-overview.1.1.0.js' %} "></script>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    </body>
+
+    <!--begin::Global Theme Styles(used by all pages) -->
+    <link href="{% static 'plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/style.bundle.css' %}" rel="stylesheet" type="text/css" />
+    <!--end::Global Theme Styles -->
+
+    <!--begin::Layout Skins(used by all pages) -->
+        
+    <link href="{% static 'css/skins/header/base/light.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/skins/header/menu/light.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/skins/brand/navy.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/skins/aside/navy.css' %}" rel="stylesheet" type="text/css" />        
+    <!--end::Layout Skins -->
+
+    <link rel="shortcut icon" href="https://preview.keenthemes.com//keen/themes/keen/theme/demo1/dist/assets/media/logos/favicon.ico" />
+
+</head>
+  <!-- end::Head -->
+
+<!-- begin::Body -->
+<body  class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled kt-aside--fixed kt-page--loading">
+  {% block content %}
+
+
+  
+  {% endblock content %}
+
+
+    <!-- begin::Global Config(global config for global JS sciprts) -->
+<script>
+      var KTAppOptions = {
+        "colors": {
+            "state": {
+                "brand": "#5d78ff",
+                "metal": "#c4c5d6",
+                "light": "#ffffff",
+                "accent": "#00c5dc",
+                "primary": "#5867dd",
+                "success": "#34bfa3",
+                "info": "#36a3f7",
+                "warning": "#ffb822",
+                "danger": "#fd3995",
+                "focus": "#9816f4"
+            },
+            "base": {
+                "label": [
+                    "#c5cbe3",
+                    "#a1a8c3",
+                    "#3d4465",
+                    "#3e4466"
+                ],
+                "shape": [
+                    "#f0f3ff",
+                    "#d9dffa",
+                    "#afb4d4",
+                    "#646c9a"
+                ]
+            }
+        }
+    };
+</script>
+<!-- end::Global Config -->
+
+<!--begin::Global Theme Bundle(used by all pages) -->
+<script src="{% static '/plugins/global/plugins.bundle.js'%}" type="text/javascript"></script>
+<script src="{% static '/js/scripts.bundle.js'%}" type="text/javascript"></script>
+<!--end::Global Theme Bundle -->
+
+    
+</body>
+  <!-- end::Body -->
 </html>

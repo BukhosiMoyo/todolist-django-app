@@ -5,8 +5,97 @@
 {% block content %}
 
 
+<!--begin::Portlet-->
+<div class="container mt-5" >
+    <div class="kt-portlet ">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">Todo List</h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="kt-section">
+                <form action="/" method="POST">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <label>Add New Todo</label>
+                        <div class="form-group m-0">
+                            {{form.title}}
+                            <button type="submit" class="btn btn-success btn-block mt-4">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!--begin::Portlet-->
+{% for task in tasks %}
+
+	
+            <div class="kt-portlet kt-portlet--collapsed container cantainer-fluid " data-ktportlet="true" id="kt_portlet_tools_6">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="flaticon2-position kt-label-font-color-2"></i>
+                        </span>
+                        {% if task.complete == True %}
+                            <strike>
+                            <h4 class="kt-portlet__head-title">
+                                {{task|truncatewords:20|linebreaks}}                                    
+                            </h4>
+                            </strike>
+                        {% else %}
+                            <h4 class="kt-portlet__head-title">
+                                {{task}}                                    
+                            </h4>
+                        {% endif %}
+
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-group">
+                            <div class="btn-group">
+                                <button type="button" data-ktportlet-tool="toggle" class="btn btn-success">
+                                    <span class="kt-portlet__head-icon">
+                                        <i class="flaticon2-rectangular kt-label-font-color-0"></i>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'update_task' task.id %}">Update</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'delete' task.id %}">Delete</a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-portlet__body">
+                    <div class="kt-portlet__content">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy is simply dummy is simply dummy is simply dummy is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                        Lorem Ipsum has been the industry.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	
+{% endfor%}
+                <!--end::Portlet-->
+<!--end::Portlet-->
+
+
+
 
 <h1>To do</h1>
+
 
 <form action="/" method="POST">
     {% csrf_token %}
@@ -21,7 +110,7 @@
         <a href="{% url 'update_task' task.id %}">update</a>
 
         {% if task.complete == True %}
-        <strike>{{task}}</strike>
+        <strike><p>{{task}}</p></strike>
         
         {% else %}
         <p>{{task}}</p>
@@ -29,6 +118,18 @@
     </div>
 
 {% endfor %}
+
+<script>
+
+      var form_fields = document.getElementsByTagName('input')
+      form_fields[1].placeholder='Add a new task...';
+      form_fields[1].class='form-control form-control-lg';
+
+      for (var field in form_fields){
+          form_fields[field].className += ' form-control'
+      }
+   
+  </script>
 
 
 {% endblock content %}

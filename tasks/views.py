@@ -8,6 +8,8 @@ def  index(request):
 
     tasks = Task.objects.all()
     form = TaskForm(request.POST)
+    #complete = tasks.complete.count()
+    #pending = tasks.complete.count()-tasks.count()
     
     if request.method == "POST":
         form = TaskForm(request.POST)
@@ -15,9 +17,13 @@ def  index(request):
             form.save()
         return redirect("/")
 
+    complete_task = tasks.filter(complete=True).count()
+    pending_task  = tasks.filter(complete=False).count()
+
+
     
 
-    context= {'tasks':tasks, 'form':form,}
+    context= {'tasks':tasks, 'form':form, 'complete':complete_task, 'pending':pending_task}
 
     return render(request, "tasks/list.html", context)
 
@@ -29,6 +35,9 @@ def updateTask(request, pk):
         if form.is_valid():
             form.save()
         return redirect('/')
+
+    
+
 
     context= {'form':form}
     return render(request, 'tasks/update_task.html', context)
@@ -51,3 +60,7 @@ def deleteTask(request, pk):
     #This is the dectionary that stores the information that is to be rendered
     context= {'item':item}
     return render(request, 'tasks/delete.html', context)
+
+def about(request):
+
+    return render(request, "tasks/about.html")

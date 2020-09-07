@@ -4,13 +4,63 @@
 
 {% block content %}
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="#">Bukhosi</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown-1" aria-controls="navbarNavDropdown-1"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown-1">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+            <span class="sr-only">(current)</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About Author</a>
+        </li>
+        </ul>
+        
+        <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+            <i class="flaticon-twitter-logo"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+            <i class="flaticon-facebook-letter-logo"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+            <i class="flaticon-linkedin-logo"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+            <i class="socicon-github"></i>
+            </a>
+        </li>
+        </ul>
+    </div>
+</nav>
 
 <!--begin::Portlet-->
-<div class="container mt-5" >
+<div class="container mt-5 mt-5" >
     <div class="kt-portlet ">
         <div class="kt-portlet__head">
             <div class="kt-portlet__head-label">
                 <h3 class="kt-portlet__head-title">Todo List</h3>
+                <button type="button" class="btn btn-danger btn-sm ml-4">
+							Pending  <span class="badge badge-light">{{pending}}</span>
+				</button>
+
+                <button type="button" class="btn btn-success btn-sm ml-4">
+							Complete  <span class="badge badge-light">{{complete}}</span>
+				</button>
             </div>
         </div>
         <div class="kt-portlet__body">
@@ -97,6 +147,8 @@
 </div>    
 
 {% endfor%}
+
+
 <!-- begin::Scrolltop -->
 <div id="kt_scrolltop" class="kt-scrolltop">
 	<i class="fa fa-arrow-up"></i>

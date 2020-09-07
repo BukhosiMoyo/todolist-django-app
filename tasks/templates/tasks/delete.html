@@ -1,3 +1,45 @@
+{% extends "tasks/main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<!--begin::Portlet-->
+<div class="container mt-5" >
+    <div class="kt-portlet ">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">Todo List</h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="kt-section">
+                <p>Are you sure you want to delete <span style="color:#00c5dc; font-weight:bold"; >{{item}}</span></p>
+
+                
+
+                <form method="POST" class="mt-4" >
+                    {% csrf_token %}
+                    <a class="btn btn-info btn-sm" href="{%  url 'update_task' item.id %}">cancel</a>
+                    <button type="submit" class="btn btn-danger btn-sm ">
+                                Delete
+                    </button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
 <p>Are you sure you want to delete {{item}}</p>
 
 <a href="{%  url 'update_task' item.id %}">cancel</a>

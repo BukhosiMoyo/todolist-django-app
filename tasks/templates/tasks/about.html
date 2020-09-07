@@ -1,0 +1,92 @@
+{% extends "tasks/main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="#">Bukhosi</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown-1" aria-controls="navbarNavDropdown-1"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown-1">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'list' %}">Home
+            <span class="sr-only">(current)</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="">About Author</a>
+        </li>
+        </ul>
+        
+        <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+            <i class="flaticon-twitter-logo"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+            <i class="flaticon-facebook-letter-logo"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+            <i class="flaticon-linkedin-logo"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+            <i class="socicon-github"></i>
+            </a>
+        </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<div class="col-lg-5 col-md-12" style="margin:auto;">
+    <div class='card card-small mb-3'>
+        <div class="card-header border-bottom">
+        <h6 class="m-0">About Author</h6>
+        </div>
+        <div class='card-body p-0'>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item p-3">
+            <span class="d-flex mb-2">
+                <i class="flaticon2-menu-4 mr-1"></i>
+                <strong class="mr-1">Title:</strong> Todo App
+            </span>
+            <span class="d-flex mb-2">
+                <i class="flaticon2-user mr-1"></i>
+                <strong class="mr-1">Author:</strong>
+                <strong class="text-success">Bukhosi Moyo</strong>
+            </span>
+            <span class="d-flex mb-2">
+                <i class="flaticon2-hexagonal mr-1"></i>
+                <strong class="mr-1">Author Title:</strong>Full Stack Developer
+            </span>
+            <span class="d-flex">
+                <i class="flaticon2-ui mr-1"></i>
+                <strong class="mr-1">Technology:</strong> 
+                <span class="badge mr-3 badge-primary">Python</span>
+                <span class="badge mr-3 badge-primary">Django</span>
+            </span>
+            </li>
+            <li class="list-group-item d-flex px-3">
+            <button class="btn btn-sm btn-outline-accent">
+                <i class="flaticon2-menu-4"></i>More Apps</button>
+            <button class="btn btn-sm btn-accent ml-auto" action="home">
+                <i class="flaticon-home-2"></i> Home</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}
